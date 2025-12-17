@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Silhouette Text Rain</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background: #000;
+      }
+
+      /* MediaPipe는 display:none이면 segmentation 실패 → opacity:0 로 숨김 처리 */
+      #realVideo {
+        position: absolute;
+        left: -9999px;
+        opacity: 0;
+      }
+    </style>
+
+    <script src="libraries/p5.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/selfie_segmentation.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.157.0/build/three.min.js"></script>
+  </head>
+  <body>
+    <video id="realVideo" width="640" height="480" autoplay playsinline></video>
+
+    <script src="sketch.js"></script>
+  </body>
+</html>
