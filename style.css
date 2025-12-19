@@ -1,0 +1,124 @@
+/* 1. 전체 기본 설정 */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  background-color: #f4f1ea; /* 따뜻한 아이보리 배경 */
+  font-family: "DotumChe", "Apple SD Gothic Neo", sans-serif;
+  overflow-x: hidden; /* 가로 스크롤 방지 */
+}
+
+/* 2. 3열 그리드 레이아웃 (번호 | 제목 | 본문) */
+#split-layout {
+  display: grid;
+  /* 번호(200px) | 제목공간(250px) | 본문(나머지 전체) */
+  grid-template-columns: 200px 250px 1fr;
+  min-height: 200vh; /* 스크롤이 가능하도록 길게 설정 */
+  padding: 100px 40px;
+  justify-content: start;
+  position: relative;
+  z-index: 1;
+}
+
+/* 공통 컬럼 설정 */
+.side-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 3. 왼쪽 문장 번호 (Index) */
+.left-idx {
+  text-align: left;
+  font-size: 15px;
+  color: #282828;
+  line-height: 2; /* 문장 간격 - 본문과 반드시 일치시켜야 함 */
+  font-family: monospace;
+}
+
+/* 4. 중앙 세로 대제목 (Vertical Title) */
+#vertical-title-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+#vertical-title {
+  position: fixed; /* 스크롤해도 화면 중앙에 고정 */
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg); /* 90도 회전 및 중앙 정렬 */
+
+  font-size: 100px; /* 거대한 타이포그래피 */
+  font-family: "1610_Cancellaresca_lim";
+  font-weight: 900;
+  color: rgba(0, 0, 0, 0.5); /* 아주 연하게 처리하여 배경처럼 작동 */
+  white-space: nowrap;
+  letter-spacing: 15px;
+  pointer-events: none; /* 클릭/선택 방지 */
+  text-transform: uppercase;
+}
+
+/* 5. 오른쪽 본문 텍스트 (Text) */
+.right-txt {
+  text-align: left; /* 또는 justify */
+  font-size: 15px;
+  line-height: 2; /* 왼쪽 번호와 높이 맞춤 */
+  color: #282828;
+  max-width: 1600px; /* 본문이 너무 길어지지 않게 제한 */
+}
+
+/* 6. 중앙 고정 블랙박스 (Graphic Box) */
+#fixed-graphic-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 화면 정중앙 배치 */
+  width: 600px;
+  height: 450px;
+  background-color: #000;
+  z-index: 100; /* 텍스트들보다 위에 위치 */
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* 7. p5.js 캔버스 설정 */
+#canvas-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+#canvas-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* 8. 텍스트 유닛 및 하이라이트 효과 */
+.side-item {
+  transition: all 0.5s ease;
+}
+
+.active-unit {
+  color: #000 !important;
+  font-weight: bold !important;
+  opacity: 1 !important;
+}
+
+.inactive-unit {
+  opacity: 0.5; /* 비활성 문장은 매우 연하게 */
+}
+
+/* 9. 그래픽 내부 UI */
+.inner-info {
+  position: absolute;
+  top: 15px;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  color: #555;
+  font-size: 10px;
+  letter-spacing: 1px;
+  font-family: "DotumChe";
+}
